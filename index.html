@@ -2,29 +2,104 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <!-- scale to screen -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- link to css -->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <title>GifTastic</title>
 </head>
 
-<body>
-   
-    <h1>GifTastic Project</h1>
+<body onload="createButtons()">
+    
+    <!-- page title that appears at the top of the page -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" id="pageTitle">
+                <h1>GifTastic Foods</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- search form -->
+    <div class="row">
+        <div class="search col-md-12" id="searchBox">
+            <form id="queryForm">
+                <input name="query" type="text" autocomplete="off" required>
+                <input type="submit" id="button" value="Submit">
+            </form>
+        </div>
+    </div>
 
 
+    <!-- buttons-->
+    <div class="row" >
+        <div class="col-md-12" id="foodButtons">
+        </div>
+    </div>
 
     
-    <!-- game.js, jQuery, Popper.js,-->
+
+
+
+    <!-- game.js, jQuery, Popper.js, Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="assets/javascript/app.js"></script>    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="assets/javascript/giphy.js"></script>
+
 </body>
+
 </html>
+
+
+
+
+
+
+<!-- <script type="text/javascript"> --
+                // //button to populate giph upon click
+                // $("#pizzaButton").on("click", function () {
+                //     var urlQuery = "https://api.giphy.com/v1/gifs/random?api_key=c1KKyLhS674xkaJekdDB2q9Iu1ORfMwt&tag=pizza&rating=G";
+
+                //     // jQuery ajax call to get giph from url. Method gets the request according to the documentation
+                //     $.ajax({
+                //         url: urlQuery,
+                //         method: "GET"
+                //     })
+
+                //         // promise tiggered upon response
+                //         .then(function (response) {
+
+                //             //declares variable and sets it equal to the image url using dot notation
+                //             var imageUrl = response.data.image_origional_url;
+
+                //             //uses jQuery to dynamicaly create an html img element
+                //             var pizzaImage = $("<img>");
+
+                //             //reference pizzaImage and use jQuery attr method to add a value to the set attribute
+                //             pizzaImage.attr("src", imageUrl);
+                //             pizzaImage.attr("alt", "pizza image");
+
+                //             //use jQuery to select the div with id=images and use jQuery .prepend method to render the pizzaImage div
+                //             $("#images").prepend(pizzaImage);
+
+                //         })
+                // })
+
+
+            //<button food-type=["cake", "icecream", "pizza"];
+           // food-type[i]
+           
+            </script>

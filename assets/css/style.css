@@ -1,1 +1,17 @@
 /* style.css */
+
+#pageTitle {
+    text-align: center;
+    background-color: blueviolet;
+
+}
+
+#searchBox {
+    text-align: center;
+    background-color: blue;
+}
+
+#foodButtons {
+    text-align: center;
+    background-color: aqua;
+}
