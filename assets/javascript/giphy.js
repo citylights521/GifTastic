@@ -6,25 +6,22 @@ var topics = ["pizza", "ice cream", "candy", "cake", "jelly beans", "soup", "car
 //creates buttons from array above onload
 function createButtons() {
     var foodButtonsDiv = $("#foodButtons");
+    foodButtonsDiv.empty();
     for (var i = 0; i < topics.length; i++) {
-        var btn = document.createElement("button");
+        var btn = $("<button>");
+        btn.attr("class", "btn btn-light buttonStyle");
         var t = document.createTextNode(topics[i]);
-        btn.appendChild(t);
+        btn.append(t);
         foodButtonsDiv.append(btn);
     }
-
     $("button").on("click", onButtonClick);
 }
 
 //adds button when queryForm submits
 function addButton(event) {
     var topic = $("#searchTopic").val();
-
-    var btn = document.createElement("button");
-    var t = document.createTextNode(topic);
-    btn.appendChild(t);
-    $(btn).on("click", onButtonClick);
-    $("#foodButtons").append(btn);
+    topics.push(topic);
+    createButtons();
     $("#searchTopic").val('');
     event.preventDefault();
 }
@@ -52,52 +49,47 @@ function onButtonClick(event) {
             $("#giphyShow").empty();
             //for loop that adds one each loop for the length/duration of the loop which in this case is 10
             for (var i = 0; i < results.length; i++) {
-
                 //creates a new div for each result (giph) found
                 var gifDiv = $("<div>");
-
-
+                gifDiv.attr("class", "gifPres");
                 //stores the rating for the  results object
                 var rating = results[i].rating;
-
-
                 //uses jQuery to creat a new html p tag and then ujsing jQuery .text() method, add the rating as text
                 var p = $("<p>").text("Rating: " + rating);
-
                 //uses jQuery to cerate a new html img element
                 var topicImage = $("<img>");
-
                 //reference personImage and using jQuery .attr() method add the url from the response object and feed it to the src attribute
-                topicImage.attr("src", results[i].images.fixed_height.url);
-
+                topicImage.attr("src", results[i].images.fixed_height_still.url);
+                topicImage.attr("data-still", results[i].images.fixed_height_still.url);
+                topicImage.attr("data-animate", results[i].images.fixed_height.url);
+                topicImage.attr("data-state", "still");
                 //uses jQuery .prepend method to render the p variable to our gifDiv (created variable for gifDiv above)
                 gifDiv.prepend(p);
-
                 //uses jQuery .prepend method to render the p variable to our personImage (created variable for gifDiv above)
                 gifDiv.prepend(topicImage);
-
                 //using jQuery, select the div with id=gif-appear-here and use jQuery prepend to render the gifDiv we just created
                 $("#giphyShow").prepend(gifDiv);
+                //click event for still/animate
+                topicImage.on("click", clickGif);
             }
         });
+
+    //function changes attributes to enable still/animate
+    function clickGif() {
+        // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+        var state = $(this).attr("data-state");
+        // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+        // Then, set the image's data-state to animate
+        // Else set src to the data-still value
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
+    }
 }
 
 //call-back on submit to create new button from search
 $("#queryForm").submit(addButton);
-
-
-
-// function callGiphy(){}
-
-
-
-// //javascript, jQuery
-// var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5");
-// xhr.done(function(data) { console.log("success got data", data); });
-
-
-
-// // var giph = $.get('https://api.giphy.com/v1/gifs/search?api_key=c1KKyLhS674xkaJekdDB2q9Iu1ORfMwt&q=pizza&limit=25&offset=0&rating=G&lang=en');
-// // giph.done(function (data) {
-// // console.log(giphy);
-// // })
