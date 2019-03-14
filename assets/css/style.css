@@ -2,19 +2,19 @@
 
 #pageTitle {
     text-align: center;
-    background-color: rgba(15, 70, 208, 0.75);
-  width: 100%;
-  color: white;
-  font-size: 75px;
-padding: 15px;
-font-family: 'Comfortaa', cursive;
+    background-color:rgb(253, 186, 41);
+    width: 100%;
+    color: white;
+    font-size: 75px;
+    padding: 15px;
+    font-family: 'Comfortaa', cursive;
 }
 
 #queryForm {
     text-align: center;
-    background-color: rgba(15, 70, 208, 0.75);
+    background-color: rgb(253, 186, 41);
     width: 100%;
-   padding-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .search {
@@ -27,15 +27,18 @@ font-family: 'Comfortaa', cursive;
 
 #foodButtons {
     text-align: center;
-    background-color: rgba(15, 70, 208, 0.75);
+    background-color:rgb(253, 186, 41);
 }
 
 #giphyShow {
-    background-color: rgba(15, 70, 208, 0.20);
+    background-image: url(../images/abstract-art-cooking-262896.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .gifPres {
     margin: 5%;
+    background-color:rgba(255, 255, 255, .6);
 }
 
 .buttonStyle {
